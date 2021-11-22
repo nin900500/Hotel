@@ -23,6 +23,7 @@ public class HotelRoom
 	public void changeAvailibility(boolean availibilty)
 	{
 		this.availibility = availibility;
+
 	}
 	
 	public void updateCapacity(int roomCapacity)
@@ -44,4 +45,5 @@ public class HotelRoom
 	{
 		return roomType;
 	}
+
 }

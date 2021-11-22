@@ -1,6 +1,5 @@
 package hotel;
 
-
 import java.util.Hashtable;
 
 public class Hotel 
