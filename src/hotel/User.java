@@ -23,5 +23,10 @@ public class User
 	{
 		return this.usersPhoneNumber;
 	}
+	
+	public String getEmail()
+	{
+		return this.usersEmail;
+	}
 
 }
