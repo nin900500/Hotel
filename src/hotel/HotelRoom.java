@@ -1,27 +1,29 @@
 package hotel;
 
-public class HotelRoom
+public class HotelRoom 
 {
-	
 	private int price, roomCapacity, roomNumber;
-	private boolean availability;
+	private boolean availibility;
 	private String roomType;
+	private String [] types = {"Regular", "Suite" , "Deluxe Suite"};
 	
-	private String [] types = {"Regular", "Suite", "Deluxe Suite"};
+	
 	
 	public HotelRoom(int roomNumber, int price, int indexForType) 
 	{
+		
 		this.roomNumber = roomNumber;
-		this.price = price; 
-		if(indexForType >= 0 && indexForType <= 3)
+		this.price = price;
+		if(indexForType >=0 && indexForType <=3 )
 			roomType = types[indexForType];
-		else 
+		else
 			roomType = types[indexForType&3];
 	}
 	
-	public void changeAvailability(boolean availability)
+	public void changeAvailibility(boolean availibilty)
 	{
-		this.availability = availability; 
+		this.availibility = availibility;
+
 	}
 	
 	public void updateCapacity(int roomCapacity)
