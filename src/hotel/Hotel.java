@@ -11,4 +11,9 @@ public class Hotel {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public static void main(String [] args)
+	{
+		System.out.print("Welcome to our hotel");
+	}
 }
