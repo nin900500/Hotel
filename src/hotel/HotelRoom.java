@@ -16,10 +16,8 @@ public class HotelRoom
 		this.price = price;
 		if(indexForType >=0 && indexForType <=3 )
 			roomType = types[indexForType];
-		
 		else
 			roomType = types[indexForType&3];
-		
 	}
 	
 	public void changeAvailibility(boolean availibilty)

@@ -10,18 +10,25 @@ public class Hotel
 	private String address;
 	private String phoneNumber;
 	
-	
-	
-	
-	public Hotel() 
-	{
+	public Hotel(String name, String address, String phoneNumber) {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public static void main(String [] args)
-	{
+	String getName() {
+		return this.name;
+	}
+	
+	String getAddress() {
+		return this.address;
+	}
+	
+	String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+	
+	public static void main(String [] args) {
 		System.out.print("Welcome to our hotel");
 	}
 }
