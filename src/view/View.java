@@ -37,7 +37,22 @@ public class View {
 	private JTextField address;
 	private JTextField phoneNumber;
 	
+	private HotelRoom selectedRoom;
+	private JPanel roomInfo;
+	private JLabel priceLabel;
+	private JLabel capacityLabel;
+	private JLabel roomLabel;
+	
 	private ArrayList<ArrayList<JButton>> floorToRoomButtons;
+	
+	private void SelectRoom(HotelRoom room) {
+		roomInfo.setVisible(true);
+		selectedRoom = room;
+		priceLabel.setText("Price: $" + room.getPrice());
+		capacityLabel.setText("Capacity: " + room.getCapacity());
+		roomLabel.setText("Room: " + room.getRoomNumber());
+		
+	}
 	
 	public View(Hotel hotel) {
 		
@@ -49,6 +64,7 @@ public class View {
 		frame.getContentPane().setLayout(null);
 		
 		hotelName = new JTextField();
+		hotelName.setEditable(false);
 		hotelName.setHorizontalAlignment(SwingConstants.CENTER);
 		hotelName.setFont(new Font("Tahoma", Font.BOLD, 20));
 		hotelName.setText(hotel.getName());
@@ -57,6 +73,7 @@ public class View {
 		hotelName.setColumns(10);
 		
 		address = new JTextField();
+		address.setEditable(false);
 		address.setText(hotel.getAddress());
 		address.setHorizontalAlignment(SwingConstants.CENTER);
 		address.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -65,6 +82,7 @@ public class View {
 		frame.getContentPane().add(address);
 		
 		phoneNumber = new JTextField();
+		phoneNumber.setEditable(false);
 		phoneNumber.setText(hotel.getPhoneNumber());
 		phoneNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		phoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -111,10 +129,43 @@ public class View {
 				roomButton.setBackground(room.available() == true ? Color.GREEN : Color.RED);
 				frame.getContentPane().add(roomButton);
 				this.floorToRoomButtons.get(savedFloorNum - 1).add(roomButton);
+				roomButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						SelectRoom(room);
+					}	
+				});
 			}
 
 		}
 		
+		roomInfo = new JPanel();
+		roomInfo.setBounds(0, 465, 275, 168);
+		frame.getContentPane().add(roomInfo);
+		roomInfo.setLayout(null);
+		
+		priceLabel = new JLabel("Price: $50");
+		priceLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		priceLabel.setBounds(10, 38, 265, 29);
+		roomInfo.add(priceLabel);
+		
+		capacityLabel = new JLabel("Capacity: 4");
+		capacityLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		capacityLabel.setBounds(10, 66, 265, 29);
+		roomInfo.add(capacityLabel);
+		
+		JButton reserveButton = new JButton("Reserve");
+		reserveButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		reserveButton.setBounds(10, 118, 255, 39);
+		roomInfo.add(reserveButton);
+		
+		roomLabel = new JLabel("Room: 102");
+		roomLabel.setBackground(Color.LIGHT_GRAY);
+		roomLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		roomLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		roomLabel.setBounds(0, 0, 275, 39);
+		roomInfo.add(roomLabel);
+		
+		roomInfo.setVisible(false);
 		
 		frame.setVisible(true);
 

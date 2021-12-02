@@ -16,6 +16,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JLabel;
+import java.awt.Color;
 
 public class Swing {
 
@@ -24,6 +26,7 @@ public class Swing {
 	private JTextField address;
 	private JTextField phoneNumber;
 	private JButton floor1_2;
+	private JPanel roomInfo;
 
 	/**
 	 * Launch the application.
@@ -107,5 +110,32 @@ public class Swing {
 		floor1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		floor1_2.setBounds(318, 129, 214, 32);
 		frame.getContentPane().add(floor1_2);
+		
+		roomInfo = new JPanel();
+		roomInfo.setBounds(0, 465, 275, 168);
+		frame.getContentPane().add(roomInfo);
+		roomInfo.setLayout(null);
+		
+		JLabel priceLabel = new JLabel("Price: $50");
+		priceLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		priceLabel.setBounds(10, 38, 265, 29);
+		roomInfo.add(priceLabel);
+		
+		JLabel capacityLabel = new JLabel("Capacity: 4");
+		capacityLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		capacityLabel.setBounds(10, 66, 265, 29);
+		roomInfo.add(capacityLabel);
+		
+		JButton reserveButton = new JButton("Reserve");
+		reserveButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		reserveButton.setBounds(10, 118, 255, 39);
+		roomInfo.add(reserveButton);
+		
+		JLabel roomLabel = new JLabel("Room: 102");
+		roomLabel.setBackground(Color.LIGHT_GRAY);
+		roomLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		roomLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		roomLabel.setBounds(0, 0, 275, 39);
+		roomInfo.add(roomLabel);
 	}
 }

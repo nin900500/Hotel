@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import view.View;
 
@@ -22,7 +23,7 @@ public class Hotel
 			floorsToRooms.add(new ArrayList<HotelRoom>());
 			for (int room = 1; room <= roomsPerFloor; room++) {
 				int roomNumber = (floor * 100) + (room);
-				floorsToRooms.get(floor - 1).add(new HotelRoom(roomNumber, pricePerRoom));
+				floorsToRooms.get(floor - 1).add(new HotelRoom(roomNumber, new Random().nextInt(200 - 100 + 1) + 100, new Random().nextInt(6 - 2 + 1) + 2));
 			}
 		}
 		//view

@@ -2,14 +2,15 @@ package model;
 
 public class HotelRoom 
 {
-	private int price, roomCapacity, roomNumber;
+	private int price, roomNumber, capacity;
 	private boolean availibility;
 	
-	public HotelRoom(int roomNumber, int price) 
+	public HotelRoom(int roomNumber, int price, int capacity) 
 	{
 		
 		this.roomNumber = roomNumber;
 		this.price = price;
+		this.capacity = capacity;
 		this.availibility = true;
 	}
 	
@@ -22,9 +23,9 @@ public class HotelRoom
 		this.availibility = newAvail;
 	}
 	
-	public void updateCapacity(int roomCapacity)
+	public int getCapacity ()
 	{
-		this.roomCapacity = roomCapacity;
+		return this.capacity;
 	}
 	
 	public int getRoomNumber()
