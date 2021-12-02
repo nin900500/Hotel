@@ -13,6 +13,10 @@ public class HotelRoom
 		this.availibility = true;
 	}
 	
+	public boolean available() {
+		return this.availibility;
+	}
+
 	public void changeAvailibility(boolean newAvail)
 	{
 		this.availibility = newAvail;

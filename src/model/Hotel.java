@@ -29,6 +29,10 @@ public class Hotel
 		View view = new View(this);
 	}
 	
+	public ArrayList<ArrayList<HotelRoom>> getFloorToRooms() {
+		return this.floorsToRooms;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -42,6 +46,6 @@ public class Hotel
 	}
 	
 	public static void main(String [] args) {
-		Hotel motel = new Hotel("5 Star Motel", "1234 Kings St, San Diego, CA, 92137", "(525) 231 - 1387", 3, 20, 100);
+		Hotel motel = new Hotel("5 Star Motel", "1234 Kings St, San Diego, CA, 92137", "(525) 231 - 1387", 5, 16, 100);
 	}
 }
