@@ -12,11 +12,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 public class login {
 
 	private JFrame frame;
 	private JTextField tf1;
 	private JTextField tf2;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -67,16 +69,20 @@ public class login {
 		frame.getContentPane().add(tf1);
 		tf1.setColumns(10);
 		
-		tf2 = new JTextField();
-		tf2.setBounds(245, 128, 130, 26);
-		frame.getContentPane().add(tf2);
-		tf2.setColumns(10);
+		
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(245, 128, 130, 26);
+		passwordField.setEchoChar('*');
+		frame.getContentPane().add(passwordField);
+		
 		
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(admin.getPass().equals(tf2.getText()) && admin.getUser().equals(tf1.getText()))
+				if(admin.getPass().equals(passwordField.getText()) && admin.getUser().equals(tf1.getText()))
 				{
 					JOptionPane.showMessageDialog(null, "Login Successful");
 					
@@ -91,5 +97,8 @@ public class login {
 		});
 		btnNewButton.setBounds(173, 193, 117, 29);
 		frame.getContentPane().add(btnNewButton);
+		
+		
+		
 	}
 }
