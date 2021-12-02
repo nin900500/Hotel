@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -127,6 +128,7 @@ public class Swing {
 		roomInfo.add(capacityLabel);
 		
 		JButton reserveButton = new JButton("Reserve");
+		
 		reserveButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		reserveButton.setBounds(10, 118, 255, 39);
 		roomInfo.add(reserveButton);

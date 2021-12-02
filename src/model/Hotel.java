@@ -30,6 +30,8 @@ public class Hotel
 		View view = new View(this);
 	}
 	
+	
+	
 	public ArrayList<ArrayList<HotelRoom>> getFloorToRooms() {
 		return this.floorsToRooms;
 	}

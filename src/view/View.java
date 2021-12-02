@@ -21,6 +21,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
@@ -33,7 +34,7 @@ import model.Hotel;
 import model.HotelRoom;
 
 public class View {
-		
+	
 	private JFrame frame;
 	private JTextField hotelName;
 	private JTextField address;
@@ -65,7 +66,8 @@ public class View {
 		roomToRoomButton.get(room).setBackground(Color.RED);
 	}
 	
-	public View(Hotel hotel) {
+	public View(Hotel hotel) 
+	{
 		
 		this.floorToRoomButtons = new ArrayList<ArrayList<JButton>>();
 		this.roomToRoomButton = new HashMap<>(){};
@@ -74,7 +76,7 @@ public class View {
 		frame.setBounds(100, 100, 548, 672);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setVisible(true);
 		hotelName = new JTextField();
 		hotelName.setEditable(false);
 		hotelName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -168,7 +170,13 @@ public class View {
 		capacityLabel.setBounds(10, 66, 265, 29);
 		roomInfo.add(capacityLabel);
 		
+		
 		JButton reserveButton = new JButton("Reserve");
+		reserveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "The room has been sucessfully booked");
+			}
+		});
 		reserveButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		reserveButton.setBounds(10, 118, 255, 39);
 		roomInfo.add(reserveButton);
@@ -186,8 +194,7 @@ public class View {
 				ReserveRoom();
 			}	
 		});
-		
-		frame.setVisible(true);
+			
 
 	}
 	
