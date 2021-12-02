@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -27,11 +28,12 @@ import javax.swing.Spring;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
+import controller.Controller;
 import model.Hotel;
 import model.HotelRoom;
 
 public class View {
-	
+		
 	private JFrame frame;
 	private JTextField hotelName;
 	private JTextField address;
@@ -44,19 +46,29 @@ public class View {
 	private JLabel roomLabel;
 	
 	private ArrayList<ArrayList<JButton>> floorToRoomButtons;
+	private HashMap<HotelRoom, JButton> roomToRoomButton;
 	
 	private void SelectRoom(HotelRoom room) {
 		roomInfo.setVisible(true);
-		selectedRoom = room;
+		this.selectedRoom = room;
 		priceLabel.setText("Price: $" + room.getPrice());
 		capacityLabel.setText("Capacity: " + room.getCapacity());
 		roomLabel.setText("Room: " + room.getRoomNumber());
-		
+	}
+	
+	private void ReserveRoom() {
+		roomInfo.setVisible(false);
+		Controller.reserveRoom(this, selectedRoom);
+	}
+	
+	public void UpdateRoomAvaibility(HotelRoom room) {
+		roomToRoomButton.get(room).setBackground(Color.RED);
 	}
 	
 	public View(Hotel hotel) {
 		
 		this.floorToRoomButtons = new ArrayList<ArrayList<JButton>>();
+		this.roomToRoomButton = new HashMap<>(){};
 				
 		frame = new JFrame();
 		frame.setBounds(100, 100, 548, 672);
@@ -127,11 +139,14 @@ public class View {
 				roomButton.setBounds(318, 129 + (31 * (roomInc - 1)), 214, 32);
 				roomButton.setVisible(false);
 				roomButton.setBackground(room.available() == true ? Color.GREEN : Color.RED);
+				roomToRoomButton.put(room, roomButton);
 				frame.getContentPane().add(roomButton);
 				this.floorToRoomButtons.get(savedFloorNum - 1).add(roomButton);
 				roomButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						SelectRoom(room);
+						if (room.available()) {
+							SelectRoom(room);
+						}
 					}	
 				});
 			}
@@ -164,8 +179,13 @@ public class View {
 		roomLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		roomLabel.setBounds(0, 0, 275, 39);
 		roomInfo.add(roomLabel);
-		
 		roomInfo.setVisible(false);
+		
+		reserveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReserveRoom();
+			}	
+		});
 		
 		frame.setVisible(true);
 

@@ -1,5 +1,7 @@
 package model;
 
+import view.View;
+
 public class HotelRoom 
 {
 	private int price, roomNumber, capacity;
@@ -14,15 +16,15 @@ public class HotelRoom
 		this.availibility = true;
 	}
 	
+	public void reserve(View view) {
+		this.availibility = false;
+		view.UpdateRoomAvaibility(this);
+	}
+	
 	public boolean available() {
 		return this.availibility;
 	}
 
-	public void changeAvailibility(boolean newAvail)
-	{
-		this.availibility = newAvail;
-	}
-	
 	public int getCapacity ()
 	{
 		return this.capacity;
