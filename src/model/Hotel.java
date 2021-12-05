@@ -23,12 +23,12 @@ public class Hotel
 	
     /**
      * The information of everything about the hotel that is taken in and generates the floors for the hotel. 
-     * @param name
-     * @param address
-     * @param phoneNumber
-     * @param floors
-     * @param roomsPerFloor
-     * @param pricePerRoom
+     * @param name name of hotel
+     * @param address address of hotel
+     * @param phoneNumber phone number of hotel
+     * @param floors number of loors
+     * @param roomsPerFloor room per floor
+     * @param pricePerRoom price per room
      */
 	public Hotel(String name, String address, String phoneNumber, int floors, int roomsPerFloor, int pricePerRoom) {
 		//information
@@ -49,7 +49,7 @@ public class Hotel
 	
 	/**
 	 * An arraylist to get the rooms to each floor 
-	 * @return
+	 * @return floors to rooms arrayList
 	 */
 	
 	public ArrayList<ArrayList<HotelRoom>> getFloorToRooms() {
@@ -78,12 +78,8 @@ public class Hotel
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
-	
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String [] args) {
+
+	public static void main() {
 		Hotel motel = new Hotel("5 Star Motel", "1234 Kings St, San Diego, CA, 92137", "(525) 231 - 1387", 5, 16, 100);
 	}
 }

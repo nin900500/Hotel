@@ -17,9 +17,9 @@ public class HotelRoom
 	
 	/**
 	 * 
-	 * @param roomNumber
-	 * @param price
-	 * @param capacity
+	 * @param roomNumber room number
+	 * @param price price for room
+	 * @param capacity capacity for room
 	 */
 	public HotelRoom(int roomNumber, int price, int capacity) 
 	{
@@ -32,7 +32,7 @@ public class HotelRoom
 	
 	/**
 	 * This passes in the view class and checks the availability of the hotel room 
-	 * @param view
+	 * @param view view object
 	 */
 	public void reserve(View view) {
 		this.availibility = false;
