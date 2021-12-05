@@ -33,6 +33,13 @@ import controller.Controller;
 import model.Hotel;
 import model.HotelRoom;
 
+/**
+ * 
+ * @author Jimmy Phan
+ * @author Byron Voung
+ * @author Aadit Dubey
+ *
+ */
 public class View {
 	
 	private JFrame frame;
@@ -48,7 +55,10 @@ public class View {
 	
 	private ArrayList<ArrayList<JButton>> floorToRoomButtons;
 	private HashMap<HotelRoom, JButton> roomToRoomButton;
-	
+	/**
+	 * This displays all the information about the room like price, capacity, the room number and if it is available. 
+	 * @param room
+	 */
 	private void SelectRoom(HotelRoom room) {
 		roomInfo.setVisible(true);
 		this.selectedRoom = room;
@@ -61,22 +71,29 @@ public class View {
 		roomInfo.setVisible(false);
 		Controller.reserveRoom(this, selectedRoom);
 	}
-	
+	/**
+	 * Updates the availability of the to red if reserved.
+	 * @param room
+	 */
 	public void UpdateRoomAvaibility(HotelRoom room) {
 		roomToRoomButton.get(room).setBackground(Color.RED);
 	}
-	
+	/**
+	 * This creates the whole gui for our project 
+	 * @param hotel
+	 */
 	public View(Hotel hotel) 
 	{
 		
 		this.floorToRoomButtons = new ArrayList<ArrayList<JButton>>();
 		this.roomToRoomButton = new HashMap<>(){};
-				
+		//When running this is the size of the frame 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 548, 672);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
+		//This displays the hotel name on the frame
 		hotelName = new JTextField();
 		hotelName.setEditable(false);
 		hotelName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -85,7 +102,7 @@ public class View {
 		hotelName.setBounds(0, 0, 531, 60);
 		frame.getContentPane().add(hotelName);
 		hotelName.setColumns(10);
-		
+		//This displays the address of the hotel on the frame
 		address = new JTextField();
 		address.setEditable(false);
 		address.setText(hotel.getAddress());
@@ -94,7 +111,7 @@ public class View {
 		address.setColumns(10);
 		address.setBounds(0, 59, 531, 42);
 		frame.getContentPane().add(address);
-		
+		//This displays the phone number of the hotel on the frame
 		phoneNumber = new JTextField();
 		phoneNumber.setEditable(false);
 		phoneNumber.setText(hotel.getPhoneNumber());
@@ -111,7 +128,7 @@ public class View {
         });
 		
 		ArrayList<ArrayList<JButton>> savedFloorToRooms = this.floorToRoomButtons;
-		
+		//The floors are button you can click on to change to each floor
 		int floorNum = 0;
 		for (ArrayList<HotelRoom> rooms : hotel.getFloorToRooms()) {
 			floorNum = floorNum + 1;
@@ -131,6 +148,8 @@ public class View {
 					}
 				}
 			});
+			//Once clicked on the floor button then the rooms will be displayed
+			//the rooms are also button which will then display the information about it.
 			frame.getContentPane().add(floorButton);
 			int roomInc = 0;
 			this.floorToRoomButtons.add(new ArrayList<JButton>());
@@ -154,7 +173,9 @@ public class View {
 			}
 
 		}
-		
+		/*
+		 * Shows the info of the room once the room is clicked on 
+		 */
 		roomInfo = new JPanel();
 		roomInfo.setBounds(0, 465, 275, 168);
 		frame.getContentPane().add(roomInfo);
@@ -170,7 +191,7 @@ public class View {
 		capacityLabel.setBounds(10, 66, 265, 29);
 		roomInfo.add(capacityLabel);
 		
-		
+		//Reserve button to reserve the room 
 		JButton reserveButton = new JButton("Reserve");
 		reserveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

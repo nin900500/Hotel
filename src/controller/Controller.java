@@ -4,6 +4,13 @@ import model.Hotel;
 import model.HotelRoom;
 import view.View;
 
+/**
+ * 
+ * @author Jimmy Phan
+ * @author Byron Voung
+ * @author Aadit Dubey
+ *
+ */
 public class Controller {
 	
 	private Hotel hotel;
